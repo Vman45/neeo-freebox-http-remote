@@ -18,6 +18,7 @@ Ce code est à renseigner soit dans une variable d'environnement REMOTE_CODE soi
 
 ## Shortcuts
 En plus des boutons classiques de télécommande, d'autres raccourcis sont disponibles: 
+* Un bouton Home pour revenir au menu principal (bouton FREE sur la télécommande)
 * Un bouton Play/Pause 
 * Un bouton Infos flux pour afficher les informations techniques du flux en cours
 

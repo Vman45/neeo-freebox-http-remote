@@ -12,6 +12,7 @@ const freebox = neeoapi.buildDevice('Freebox http')
 .addButton({ name: 'POWER TOGGLE', label: 'Power' })
 .addButton({ name: 'PLAY PAUSE TOGGLE', label: 'Play/Pause' })
 .addButton({ name: 'HELP', label: 'Infos flux' })
+.addButton({ name: 'HOME', label: 'Home' })
 .addButtonGroup('VOLUME')
 .addButtonGroup('Numpad')
 .addButtonGroup('Controlpad')
@@ -27,6 +28,7 @@ let startServer = (brain) => {
     neeoapi.startServer({
         brain,
         port: 6336,
+        baseurl: 'http://192.168.1.83:6336',
         name: 'freebox-http-remote',
         devices: [freebox]
       })
@@ -40,7 +42,7 @@ let startServer = (brain) => {
       });
 }
 
-const brainIp = process.env.BRAINIP;
+const brainIp = '192.168.1.7';
 
 if (brainIp) {
   console.log('- use NEEO Brain IP from env variable', brainIp);

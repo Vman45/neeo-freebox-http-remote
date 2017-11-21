@@ -1,4 +1,4 @@
-const remoteApiCode = process.env.REMOTE_CODE;
+const remoteApiCode = process.env.REMOTE_CODE || '92501214';
 const http = require('http');
 const convertInput = require('./convertInput');
 
