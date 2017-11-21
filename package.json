@@ -1,0 +1,18 @@
+{
+  "name": "neeo-freebox-http-remote",
+  "version": "0.5.0",
+  "description": "Neeo remote driver to control Freebox Player through HTTP API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "neeo",
+    "freebox"
+  ],
+  "author": "Romain Prevost (romain.prevost@melusim.fr)",
+  "license": "ISC",
+  "dependencies": {
+    "neeo-sdk": "^0.47.8"
+  }
+}
