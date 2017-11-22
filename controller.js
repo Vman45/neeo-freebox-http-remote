@@ -1,9 +1,10 @@
 const remoteApiCode = process.env.REMOTE_CODE || '92501214';
+const boxId = 'hd1'; // hd1 or hd2
 const http = require('http');
 const convertInput = require('./convertInput');
 
 const generateUrl = (button, long = false) => {
-    let url = `http://hd1.freebox.fr/pub/remote_control?code=${remoteApiCode}&key=${button}`;
+    let url = `http://${boxId}.freebox.fr/pub/remote_control?code=${remoteApiCode}&key=${button}`;
     if(long) {
         url += `&long=true`
     }

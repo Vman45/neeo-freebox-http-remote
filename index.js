@@ -28,7 +28,6 @@ let startServer = (brain) => {
     neeoapi.startServer({
         brain,
         port: 6336,
-        baseurl: 'http://192.168.1.83:6336',
         name: 'freebox-http-remote',
         devices: [freebox]
       })
@@ -42,7 +41,7 @@ let startServer = (brain) => {
       });
 }
 
-const brainIp = '192.168.1.7';
+const brainIp = process.env.BRAINIP;
 
 if (brainIp) {
   console.log('- use NEEO Brain IP from env variable', brainIp);
