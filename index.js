@@ -9,10 +9,10 @@ const freebox = neeoapi.buildDevice('Freebox http')
 .setType('DVB')
 
 // Then we add the capabilities of the device
-.addButton({ name: 'POWER TOGGLE', label: 'Power' })
 .addButton({ name: 'PLAY PAUSE TOGGLE', label: 'Play/Pause' })
 .addButton({ name: 'HELP', label: 'Infos flux' })
 .addButton({ name: 'HOME', label: 'Home' })
+.addButtonGroup('POWER')
 .addButtonGroup('VOLUME')
 .addButtonGroup('Numpad')
 .addButtonGroup('Controlpad')

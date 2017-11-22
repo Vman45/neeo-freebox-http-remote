@@ -1,10 +1,9 @@
-const remoteApiCode = process.env.REMOTE_CODE || '92501214';
-const boxId = 'hd1'; // hd1 or hd2
 const http = require('http');
+const config = require('./config');
 const convertInput = require('./convertInput');
 
 const generateUrl = (button, long = false) => {
-    let url = `http://${boxId}.freebox.fr/pub/remote_control?code=${remoteApiCode}&key=${button}`;
+    let url = `http://${config.PLAYER_ID}.freebox.fr/pub/remote_control?code=${config.REMOTE_API_CODE}&key=${button}`;
     if(long) {
         url += `&long=true`
     }
@@ -22,10 +21,5 @@ const sendButton = (button, cb, long = false) => {
 }
 
 module.exports.onButtonPressed = (name, deviceId) => {
-    let button = convertInput(name);
-    if(button) {
-        sendButton(button)
-    } else {
-        console.warn(`Unknown remote input: ${name}`)
-    }
+    convertInput(name).then( (button) => sendButton(button) ).catch( (e) => console.warn(e));
 }

@@ -13,6 +13,9 @@
   "author": "Romain Prevost (romain.prevost@melusim.fr)",
   "license": "ISC",
   "dependencies": {
-    "neeo-sdk": "^0.47.8"
+    "bluebird": "^3.5.1",
+    "neeo-sdk": "^0.47.8",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
   }
 }
