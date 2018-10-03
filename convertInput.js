@@ -4,6 +4,9 @@ let Promise = require('bluebird');
 
 const freeboxCodes = {
     'PLAY PAUSE TOGGLE': 'play',
+    'PLAY': 'play',
+    'PAUSE': 'play',
+    'STOP': 'red',
     'SKIP FORWARD':  'next',
     REVERSE: 'bwd',    
     FORWARD:  'fwd',
@@ -52,7 +55,7 @@ const freeboxCodes = {
     TV: 'tv'
 }
 
-const getFreebowPowerAction =  (input) => {
+const getFreeboxPowerAction =  (input) => {
        return new Promise((resolve, reject) => {
             request(`http://${config.FREEBOX_PLAYER_IP}:54243/device.xml`)
                 .then(() => {
@@ -72,7 +75,7 @@ const getFreebowPowerAction =  (input) => {
 
 module.exports = (input) => {
     if(input === 'POWER ON' || input === 'POWER OFF') {
-        return getFreebowPowerAction(input);
+        return getFreeboxPowerAction(input);
     }
     return new Promise((resolve, reject) => {
         if(freeboxCodes[input] == undefined) {

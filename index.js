@@ -1,56 +1,32 @@
 'use strict';
 const neeoapi = require('neeo-sdk');
-const controller = require('./controller');
+const FreeboxController = require('./controller');
 
-const freebox = neeoapi.buildDevice('Freebox http')
-.setManufacturer('Free')
-.addAdditionalSearchToken('freebox')
-.addAdditionalSearchToken('revolution')
-.setType('DVB')
+const controller = FreeboxController.build();
 
-// Then we add the capabilities of the device
-.addButton({ name: 'PLAY PAUSE TOGGLE', label: 'Play/Pause' })
-.addButton({ name: 'HELP', label: 'Infos flux' })
-.addButton({ name: 'HOME', label: 'Home' })
-.addButtonGroup('POWER')
-.addButtonGroup('VOLUME')
-.addButtonGroup('Numpad')
-.addButtonGroup('Controlpad')
-.addButtonGroup('Color Buttons')
-.addButtonGroup('Menu and Back')
-.addButtonGroup('Channel Zapper')
-.addButtonGroup('Transport Search')
-.addButtonGroup('Transport Scan')
-.addButtonGroup('Record')
-.addButtonHandler(controller.onButtonPressed);
+const freebox = neeoapi
+  .buildDevice('Freebox http')
+  .setManufacturer('Free')
+  .addAdditionalSearchToken('freebox')
+  .addAdditionalSearchToken('revolution')
+  .setType('DVB')
 
-let startServer = (brain) => {
-    neeoapi.startServer({
-        brain,
-        port: 6336,
-        name: 'freebox-http-remote',
-        devices: [freebox]
-      })
-      .then(() => {
-        console.log('# READY! use the NEEO app to search for "Freebox http".');
-      })
-      .catch((error) => {
-        //if there was any error, print message out to console
-        console.error('ERROR!', error.message);
-        process.exit(1);
-      });
-}
+  // Then we add the capabilities of the device
+  .addButton({ name: 'HELP', label: 'Infos flux' })
+  .addButton({ name: 'HOME', label: 'Home' })
+  .addButtonGroup('POWER')
+  .addButtonGroup('VOLUME')
+  .addButtonGroup('Numpad')
+  .addButtonGroup('Controlpad')
+  .addButtonGroup('Color Buttons')
+  .addButtonGroup('Menu and Back')
+  .addButtonGroup('Channel Zapper')
+  .addButtonGroup('Transport')
+  .addButtonGroup('Transport Search')
+  .addButtonGroup('Transport Scan')
+  .addButton({ name: 'RECORD', label: 'Enregistrer' })
+  .addButtonHandler((name, deviceId) => controller.onButtonPressed(name, deviceId));
 
-const brainIp = process.env.BRAINIP;
-
-if (brainIp) {
-  console.log('- use NEEO Brain IP from env variable', brainIp);
-  startServer(brainIp);
-} else {
-  console.log('- discover one NEEO Brain...');
-  neeoapi.discoverOneBrain()
-    .then((brain) => {
-      console.log('- Brain discovered:', brain.name);
-      startServer(brain);
-    });
+module.exports = {
+  devices: [ freebox ]
 }

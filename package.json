@@ -1,10 +1,11 @@
 {
-  "name": "neeo-freebox-http-remote",
+  "name": "neeo-driver-freebox-http-remote",
   "version": "0.5.1",
   "description": "Neeo remote driver to control Freebox Player through HTTP API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "neeo-sdk start",
+    "dev": "node devStart.js"
   },
   "keywords": [
     "neeo",
@@ -14,8 +15,8 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.1",
-    "neeo-sdk": "^0.49.2",
-    "request": "^2.85.0",
+    "neeo-sdk": "^0.51.0",
+    "request": "^2.88.0",
     "request-promise": "^4.2.2"
   }
 }

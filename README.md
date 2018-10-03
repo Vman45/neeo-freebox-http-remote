@@ -11,9 +11,9 @@ Ce driver permet de commander une Freebox Player via des requêtes HTTP.
 * Lancer la commande `npm install` pour installer les dépendances.
 
 ## Configuration
-Ce driver nécessite différentes informations pour fonctionner, elles sont à renseigner dans le fichier config.js. 
+Ce driver nécessite différentes informations pour fonctionner, elles sont à renseigner dans le fichier devices/config.js. 
 
-* Tout d'abotrd il vous faut le code télécommande pour commander le Player. Celui ci peut être trouvé dans le menu "Règlages" du Player, puis "Système", "Informations Freebox Player et Server". Dans le premier onglet (sélectionné par défaut) en haut à droite sous la rubrique "Télécommande" vous trouverez le code sous l'appellation "Code télécommande réseau".
+* Tout d'abord il vous faut le code télécommande pour commander le Player. Celui ci peut être trouvé dans le menu "Règlages" du Player, puis "Système", "Informations Freebox Player et Server". Dans le premier onglet (sélectionné par défaut) en haut à droite sous la rubrique "Télécommande" vous trouverez le code sous l'appellation "Code télécommande réseau".
 
 Ce code correspond à la variable REMOTE_API_CODE.
 
@@ -26,6 +26,5 @@ L'adresse correspond à la variable FREEBOX_PLAYER_IP
 ## Shortcuts
 En plus des boutons classiques de télécommande, d'autres raccourcis sont disponibles: 
 * Un bouton Home pour revenir au menu principal (bouton FREE sur la télécommande)
-* Un bouton Play/Pause 
 * Un bouton Infos flux pour afficher les informations techniques du flux en cours
 
